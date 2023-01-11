@@ -7,8 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Link to Tailwind FrameWork -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to local custom stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
-
+    <!-- Link to local JS script -->
     <script defer src="assets/script.js"></script>
 
     <title>Sudoku Haven</title>
@@ -19,37 +22,42 @@
     <header>
         <h1>Sudoku Haven</h1>
     </header>
-    <!-- Sidebar Div with difficulty selector / start button / and score-->
-    <div>
-        <!-- Shown part of Div-->
-        <div>
-            <h2>Welcome to Sudoku</h2>
-            <h3>Please select a difficulty:</h3>
-            <button id="easyBtn" type="click" class="difficultyBtn">Easy</button>
-            <button id="medBtn" type="click" class="difficultyBtn">Medium</button>
-            <button id="hardBtn" type="click" class="difficultyBtn">Hard</button>
-            <!-- Start Game button-->
-            <button id="start-game" type="button">Start Game</button>
+    <div class="flex">
+        <!-- Sidebar Div with difficulty selector / start button / and score-->
+        <div class="basis-1/3">
+            <!-- Shown part of Div-->
+            <div class="" >
+                <h2>Welcome to Sudoku</h2>
+                <h3>Please select a difficulty:</h3>
+                <button id="easyBtn" type="click" class="difficultyBtn">Easy</button>
+                <button id="medBtn" type="click" class="difficultyBtn">Medium</button>
+                <button id="hardBtn" type="click" class="difficultyBtn">Hard</button>
+                <!-- Start Game button-->
+                <div>
+                    <button id="start-game" type="button">Start Game</button>
+                </div>
+            </div>
+    
+    
+            <!-- Hidden part of Div-->
+            <div class="hide">
+                <h2>Score</h2>
+                <!-- Needs to be saved to local storage and incremented upon completion-->
+                <h3>Number of completed puzzles:</h3>
+    
+            </div>
         </div>
-
-
-        <!-- Hidden part of Div-->
-        <div>
-            <h2>Score</h2>
-            <!-- Needs to be saved to local storage and incremented upon completion-->
-            <h3>Number of completed puzzles:</h3>
-
+    
+        <div class="basis-2/3">
+            <!-- Where hero Image will go-->
+            <!-- Where Crossword will go-->
+            <!-- Append to this div-->
+            <div id="board"></div>
+            <p>This is where puzzle will go</p>
+            <img id="logoImage" href="/assets/images/sudoku-cool-logo.png">
         </div>
     </div>
-
-    <main>
-        <!-- Where hero Image will go-->
-        <!-- Where Crossword will go-->
-        <!-- Append to this div-->
-        <div id="board"></div>
-    </main>
     
-
 </body>
 
 <footer>
