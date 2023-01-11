@@ -1,5 +1,13 @@
+const startGameButton = document.getElementById("start-game");
+const hintGameButton = document.getElementById("hint-game");
+const solveGameButton = document.getElementById("solve-game");
+
+
+
+
 //? board array, will fill as it gets the set numbers from our generateBoard
 const board = Array(9).fill(null).map(() => Array(9).fill(null));
+
 
 function generateBoard16() {
     //! Api for 16x16 + its key
@@ -32,19 +40,34 @@ function generateBoard9() {
         .then(response => console.log(response))
         .catch(err => console.error(err));
 
-    //? increases the tracker for number of games played by the user
-    function gameCount() {
 
-    }
+//? increases the tracker for number of games played by the user
+function gameCount() {
 
+}
 
-    //? when the start game button is pressed it should, generate a new board, and increase number of games played by one
-    function startGame() {
-        generateBoard();
-        gameCount();
-        console.log("Game started!");
-    }
+//? when the start game button is pressed it should generate a new board
+function startGame() {
+    generateBoard();
+    console.log("Game started!");
+}
 
+// When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
+function giveHint() {
 
-    const startGameButton = document.getElementById("start-game");
-    startGameButton.addEventListener("click", startGame);// Main JS script
+}
+
+// When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
+// Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
+function solveGame() {
+    gameCount();
+}
+
+// Listener for start button being clicked
+startGameButton.addEventListener("click", startGame);// Main JS script
+
+// Listener for hint button being clicked
+startGameButton.addEventListener("click", giveHint);
+
+//Listener for solve button being clicked
+startGameButton.addEventListener("click", solveGame);
