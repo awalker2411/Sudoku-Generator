@@ -16,14 +16,46 @@
 
 
 <body>
-    <h1>Sudoku Haven</h1>
+    <header>
+        <h1>Sudoku Haven</h1>
+    </header>
+    <!-- Sidebar Div with difficulty selector / start button / and score-->
+    <div>
+        <!-- Shown part of Div-->
+        <div>
+            <h2>Welcome to Sudoku</h2>
+            <h3>Please select a difficulty:</h3>
+            <button id="easyBtn" type="click" class="difficultyBtn">Easy</button>
+            <button id="medBtn" type="click" class="difficultyBtn">Medium</button>
+            <button id="hardBtn" type="click" class="difficultyBtn">Hard</button>
+            <!-- Start Game button-->
+            <button id="start-game" type="button">Start Game</button>
+        </div>
 
 
-    <button id="start-game" type="button">Start Game</button>
+        <!-- Hidden part of Div-->
+        <div>
+            <h2>Score</h2>
+            <!-- Needs to be saved to local storage and incremented upon completion-->
+            <h3>Number of completed puzzles:</h3>
+
+        </div>
+    </div>
+
+    <main>
+        <!-- Where hero Image will go-->
+        <!-- Where Crossword will go-->
+        <!-- Append to this div-->
+        <div id="main"></div>
+    </main>
+    
+
+    
 
     <script src="your_javascript_file.js"></script>
 </body>
 
-<footer></footer>
-
+<footer>
+    Created by: John Hoy / Anthony Walker / Evan Towlerton
+</footer>
 </html>
