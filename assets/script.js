@@ -39,6 +39,7 @@ function generateBoard9() {
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
+};
 
 
 //? increases the tracker for number of games played by the user

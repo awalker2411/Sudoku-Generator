@@ -20,7 +20,7 @@
 
 <body>
     <header>
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Sudoku Haven</h1>
+        <h1>Sudoku Haven</h1>
     </header>
     <div class="flex">
         <!-- Sidebar Div with difficulty selector / start button / and score-->
@@ -33,12 +33,14 @@
                 <button id="medBtn" type="click" class="difficultyBtn">Medium</button>
                 <button id="hardBtn" type="click" class="difficultyBtn">Hard</button>
                 <!-- Start Game button-->
-                <button id="start-game" type="button">Start Game</button>
+                <div>
+                    <button id="start-game" type="button">Start Game</button>
+                </div>
             </div>
     
     
             <!-- Hidden part of Div-->
-            <div class="">
+            <div class="hide">
                 <h2>Score</h2>
                 <!-- Needs to be saved to local storage and incremented upon completion-->
                 <h3>Number of completed puzzles:</h3>
@@ -52,6 +54,7 @@
             <!-- Append to this div-->
             <div id="main"></div>
             <p>This is where puzzle will go</p>
+            <img id="logoImage" href="/assets/images/sudoku-cool-logo.png">
         </div>
     </div>
     

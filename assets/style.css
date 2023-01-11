@@ -1,14 +1,34 @@
 /* Main style sheet */
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
 
 header {
     display: flex;
     justify-content: center;
+    background-color: #224870;
+    color: #E1F2FE;
+    padding: 15px 0px 15px 0px;
+    font-size: 50px;
+    position: relative;
 }
+
 
 .hide {
     display: none;
 }
 
 h1 {
-    background-color: blue;
+    font-size: 50px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    background-color: #224870;
+    color: #E1F2FE;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
