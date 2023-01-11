@@ -20,3 +20,9 @@ function startGame() {
 
 const startGameButton = document.getElementById("start-game");
 startGameButton.addEventListener("click", startGame);// Main JS script
+
+
+
+
+
+// TEST: CHECKING FUNCTIONALITY OF SIGNED COMMITS 'DELETE LATER'
