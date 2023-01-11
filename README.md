@@ -1,4 +1,4 @@
-# Sudoku-Generator
+# Sudoku-Generator AKA Sudoku Haven
 
 ## User story sudoko
 ***
