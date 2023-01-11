@@ -1,1 +1,10 @@
 /* Main style sheet */
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
