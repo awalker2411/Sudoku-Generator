@@ -12,8 +12,8 @@ function getUserInputs() {
 
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
-    for(i = 0; i < puzzleArray; i++) {
-        if(userPuzzleArray[i] === puzzleArray[i]) {
+    for(i = 0; i < keyArray; i++) {
+        if(userPuzzleArray[i] === keyArray[i]) {
             document.getElementById.(sudokuBoxID).classList.add(textToGreen);
         } else {
             document.getElementById.(sudokuBoxID).classList.add(textToRed);
