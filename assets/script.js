@@ -3,7 +3,6 @@ const hintGameButton = document.getElementById("hint-game");
 const solveGameButton = document.getElementById("solve-game");
 const gameTracker = document.getElementById("#games")
 
-
 let puzzle9 = "";
 let solution9 = "";
 const puzzle9Array = [];
@@ -13,13 +12,6 @@ const userPuzzle9Array = [];
 //localStorage.getItem('puzzleArray', puzzle9);
 //localStorage.getItem('solution', solution9);
 //console.log("outisde function", solution9, puzzle9)
-
-
-
-
-//? board array, will fill as it gets the set numbers from our generateBoard
-const board = Array(9).fill(null).map(() => Array(9).fill(null));
-
 
 function generateBoard16() {
     console.log("this is the 16x16 game")
@@ -38,21 +30,57 @@ function generateBoard16() {
         .catch(err => console.error(err));
 
     function makeBoard(response) {
-        let puzzle16 = response.puzzle;
-        console.log(puzzle16)
-        for (let r = 0; r < 16; r++) {
-            for (let c = 0; c < 16; c++) {
-                let tile = document.createElement("div");
-                tile.id = // will be the value of the cell
-                    tile.classList.add("tile");
-                document.getElementById("board").append(tile);
-            }
+        let puzzleArray16 = Array.from(response.puzzle);
+        let solutionArray16 = Array.from(response.solution);
+        localStorage.setItem('puzzleArray16', puzzleArray16);
+        localStorage.setItem('solution16', solutionArray16);
+
+        //!this should split the string into a 16x16 array to be read by the board
+        var mainArray = [];
+
+        for (var i = 0; i < puzzleArray.length; i += 16) {
+            var subString = puzzleArray.slice(i, i + 16);
+            var subArray = subString.split("").map(Number);
+            mainArray.push(subArray);
         }
+
+        console.log(puzzleArray)
+        console.log(mainArray)
+        //! creates the table
+        var table = document.createElement("table");
+        table.setAttribute("id", "sudoku-table");
+        //! rows and cells
+        for (var i = 0; i < 16; i++) {
+            var col = document.createElement("tr");
+            for (var j = 0; j < 16; j++) {
+                var row = document.createElement("td");
+                var value = puzzleArray[i][j];
+                if (value === '.') {
+                    row.innerHTML = "";
+                    row.setAttribute("class", "empty-cell");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    input.setAttribute("class", "empty-cell-input");
+                    row.appendChild(input);
+                    input.addEventListener("input", function (event) {
+                        //Code to handle user input
+                    });
+                } else {
+                    row.innerHTML = value;
+                }
+                col.appendChild(row);
+            }
+            table.appendChild(col);
+        }
+        //Append table to the container
+        document.getElementById("board").appendChild(table);
     }
 }
+
 //? creates board based on user selected input of difficulty
 function startGame() {
     console.log("this is the 9x9 game")
+
     //! This is our API for generating the sudoku 9x9 + its key
     const creator = {
         method: 'GET',
@@ -73,6 +101,7 @@ function startGame() {
     }
     //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
+
         let puzzle9 = response.puzzle;
         puzzle9Array = Array.from(response.puzzle);
         let solution9 = response.solution;
@@ -81,21 +110,83 @@ function startGame() {
         localStorage.setItem('solution', solution9);
         console.log("inside function", solution9, puzzle9)
 
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = // will be the value of the cell
-                    tile.classList.add("tile");
-                document.getElementById("board").append(tile);
+ //!this should split the string into a 9x9 array to be read by the board
+        var mainArray = [];
+        for (var i = 0; i < puzzleArray.length; i += 9) {
+            var subString = puzzleArray.slice(i, i + 9);
+            var subArray = subString.split("").map(Number);
+            mainArray.push(subArray);
         }
+        console.log(puzzleArray)
+        console.log(mainArray)
+        //! creates the table
+        var table = document.createElement("table");
+        table.setAttribute("id", "sudoku-table");
+        //! rows and cells
+        for (var i = 0; i < 9; i++) {
+            var col = document.createElement("tr");
+            for (var j = 0; j < 9; j++) {
+                var row = document.createElement("td");
+                var value = mainArray[i][j];
+                if (value == NaN) {
+                    row.innerHTML = "";
+                    row.setAttribute("class", "empty-cell");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "number");
+                    input.setAttribute("class", "empty-cell-input");
+                    row.appendChild(input);
+                    input.addEventListener("input", function (event) {
+                        //Code to handle user input
+                    });
+                } else {
+                    row.innerHTML = value;
+                }
+                col.appendChild(row);
+            }
+            table.appendChild(col);
+        }
+        //Append table to the container
+        document.getElementById("board").appendChild(table);
     }
 }
-}
+        }
 
+        console.log(puzzleArray)
+        console.log(mainArray)
+        //! creates the table
+        var table = document.createElement("table");
+        table.setAttribute("id", "sudoku-table");
+        //! rows and cells
+        for (var i = 0; i < 9; i++) {
+            var col = document.createElement("tr");
+            for (var j = 0; j < 9; j++) {
+                var row = document.createElement("td");
+                var value = mainArray[i][j];
+                if (value == 'NaN') {
+                    row.innerHTML = "";
+                    row.setAttribute("class", "empty-cell");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    input.setAttribute("class", "empty-cell-input");
+                    row.appendChild(input);
+                    input.addEventListener("input", function (event) {
+                        //Code to handle user input
+                    });
+                } else {
+                    row.innerHTML = value;
+                }
+                col.appendChild(row);
+            }
+            table.appendChild(col);
+        }
+        //Append table to the container
+        document.getElementById("board").appendChild(table);
+    }
+}
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
 
-
+}
     // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
     // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
     function solveGame() {
@@ -115,7 +206,6 @@ function giveHint() {
             .then(response => console.log(response))
             .catch(err => console.error(err));
     }
-}
 // Listener for start button being clicked
 startGameButton.addEventListener("click", startGame);// Main JS script
 
