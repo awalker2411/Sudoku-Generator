@@ -6,11 +6,13 @@ const gameTracker = document.getElementById("#games")
 
 let puzzle9 = "";
 let solution9 = "";
-const puzzleArray = [];
-const keyArray = [];
-localStorage.getItem('puzzleArray', puzzle9);
-localStorage.getItem('solution', solution9);
-console.log("outisde function", solution9, puzzle9)
+const puzzle9Array = [];
+const solution9Array = [];
+const userPuzzle9Array = [];
+
+//localStorage.getItem('puzzleArray', puzzle9);
+//localStorage.getItem('solution', solution9);
+//console.log("outisde function", solution9, puzzle9)
 
 
 
@@ -72,10 +74,11 @@ function startGame() {
     //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
         let puzzle9 = response.puzzle;
-        let puzzleArray = Array.from(response.puzzle);
-        let solution = response.solution;
+        puzzle9Array = Array.from(response.puzzle);
+        let solution9 = response.solution;
+        solution9Array = Array.from(response.solution9);
         localStorage.setItem('puzzleArray', puzzleArray);
-        localStorage.setItem('solution', solution);
+        localStorage.setItem('solution', solution9);
         console.log("inside function", solution9, puzzle9)
 
         for (let r = 0; r < 9; r++) {
