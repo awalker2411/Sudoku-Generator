@@ -125,7 +125,6 @@ function giveHint() {
             .then(response => console.log(response))
             .catch(err => console.error(err));
     }
-}
 // Listener for start button being clicked
 startGameButton.addEventListener("click", startGame);// Main JS script
 
