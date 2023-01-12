@@ -93,11 +93,6 @@ function startGame() {
 function giveHint() {
 
 
-// When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
-function giveHint() {
-
-
-
     // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
     // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
     function solveGame() {
