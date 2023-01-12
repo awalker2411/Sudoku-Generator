@@ -36,6 +36,11 @@ function generateBoard16() {
     function makeBoard(response) {
         let puzzle16 = response.puzzle;
         console.log(puzzle16)
+        let puzzleArray16 = Array.from(response.puzzle);
+        let solution16 = response.solution;
+        localStorage.setItem('puzzleArray16', puzzleArray16);
+        localStorage.setItem('solution16', solution16);
+        console.log("inside function", solution16, puzzle16)
         for (let r = 0; r < 16; r++) {
             for (let c = 0; c < 16; c++) {
                 let tile = document.createElement("div");
@@ -49,6 +54,7 @@ function generateBoard16() {
 //? creates board based on user selected input of difficulty
 function startGame() {
     console.log("this is the 9x9 game")
+    
     //! This is our API for generating the sudoku 9x9 + its key
     const creator = {
         method: 'GET',
@@ -69,24 +75,41 @@ function startGame() {
     }
     //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
-        let puzzle9 = response.puzzle;
         let puzzleArray = Array.from(response.puzzle);
-        let solution = response.solution;
+        console.log(puzzleArray)
+        let solutionArray = Array.from(response.solution);
         localStorage.setItem('puzzleArray', puzzleArray);
-        localStorage.setItem('solution', solution);
-        console.log("inside function", solution9, puzzle9)
-
-        for (let r = 0; r < 9; r++) {
-            for (let c = 0; c < 9; c++) {
-                let tile = document.createElement("div");
-                tile.id = // will be the value of the cell
-                    tile.classList.add("tile");
-                document.getElementById("board").append(tile);
+        localStorage.setItem('solution', solutionArray);
+        //! creates the table
+        var table = document.createElement("table");
+        table.setAttribute("id", "sudoku-table");
+        //! rows and cells
+        for (var i = 0; i < 9; i++) {
+            var col = document.createElement("td");
+            for (var j = 0; j < 9; j++) {
+                var row = document.createElement("tr");
+                var value = puzzleArray[i][j];
+                if (value === '.') {
+                    row.innerHTML = "";
+                    row.setAttribute("class", "empty-cell");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    input.setAttribute("class", "empty-cell-input");
+                    row.appendChild(input);
+                    input.addEventListener("input", function (event) {
+                        //Code to handle user input
+                    });
+                } else {
+                    row.innerHTML = value;
+                }
+                col.appendChild(row);
             }
+            table.appendChild(col);
         }
+        //Append table to the container
+        document.getElementById("board").appendChild(table);
     }
 }
-
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
 
