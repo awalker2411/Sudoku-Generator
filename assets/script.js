@@ -103,7 +103,7 @@ function startGame() {
         let solutionArray = Array.from(response.solution);
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
-        
+
         //!this should split the string into a 9x9 array to be read by the board
         var mainArray = [];
 
@@ -124,18 +124,19 @@ function startGame() {
             for (var j = 0; j < 9; j++) {
                 var row = document.createElement("td");
                 var value = mainArray[i][j];
-                if (value == 'NaN') {
+                if (value > "0" || value < "9") {
+                    row.innerHTML = value;
+                } else {
+                    row.innerHTML = value;
                     row.innerHTML = "";
                     row.setAttribute("class", "empty-cell");
                     var input = document.createElement("input");
-                    input.setAttribute("type", "text");
+                    input.setAttribute("type", "number");
                     input.setAttribute("class", "empty-cell-input");
                     row.appendChild(input);
                     input.addEventListener("input", function (event) {
                         //Code to handle user input
                     });
-                } else {
-                    row.innerHTML = value;
                 }
                 col.appendChild(row);
             }
