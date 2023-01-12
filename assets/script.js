@@ -3,6 +3,7 @@ const hintGameButton = document.getElementById("hint-game");
 const solveGameButton = document.getElementById("solve-game");
 const gameTracker = document.getElementById("#games")
 
+
 let puzzle9 = "";
 let solution9 = "";
 const puzzleArray = [];
@@ -10,6 +11,7 @@ const keyArray = [];
 localStorage.getItem('puzzleArray', puzzle9);
 localStorage.getItem('solution', solution9);
 console.log("outisde function", solution9, puzzle9)
+
 
 
 
@@ -82,10 +84,14 @@ function startGame() {
                 tile.id = // will be the value of the cell
                     tile.classList.add("tile");
                 document.getElementById("board").append(tile);
-            }
         }
     }
 }
+}
+
+// When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
+function giveHint() {
+
 
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
