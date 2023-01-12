@@ -62,3 +62,18 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#board {
+    margin-top: 20%;
+}
+
+tr {
+    border: solid;
+    border-color: black;
+}
+
+td {
+    border: solid;
+    border-color: black;
+    text-align: center;
+}

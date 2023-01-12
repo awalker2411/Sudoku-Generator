@@ -103,7 +103,7 @@ function startGame() {
         let solutionArray = Array.from(response.solution);
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
-        
+
         //!this should split the string into a 9x9 array to be read by the board
         var mainArray = [];
 
@@ -124,18 +124,19 @@ function startGame() {
             for (var j = 0; j < 9; j++) {
                 var row = document.createElement("td");
                 var value = mainArray[i][j];
-                if (value == 'NaN') {
+                if (value > "0" || value < "9") {
+                    row.innerHTML = value;
+                } else {
+                    row.innerHTML = value;
                     row.innerHTML = "";
                     row.setAttribute("class", "empty-cell");
                     var input = document.createElement("input");
-                    input.setAttribute("type", "text");
+                    input.setAttribute("type", "number");
                     input.setAttribute("class", "empty-cell-input");
                     row.appendChild(input);
                     input.addEventListener("input", function (event) {
                         //Code to handle user input
                     });
-                } else {
-                    row.innerHTML = value;
                 }
                 col.appendChild(row);
             }
@@ -149,25 +150,25 @@ function startGame() {
 function giveHint() {
 
 }
-    // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
-    // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
-    function solveGame() {
-        const options = {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
-                'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
-            },
-            //? needs to be setup to take our puzzle board  
-            body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
-        };
-        //?this will generate the solution 
-        fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
-    }
+// When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
+// Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
+function solveGame() {
+    const options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
+            'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
+        },
+        //? needs to be setup to take our puzzle board  
+        body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
+    };
+    //?this will generate the solution 
+    fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+}
 // Listener for start button being clicked
 startGameButton.addEventListener("click", startGame);// Main JS script
 
