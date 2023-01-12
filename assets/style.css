@@ -13,14 +13,43 @@ header {
     position: relative;
 }
 
+#titleContainer {
+    border: solid;
+    border-color: #E1F2FE;
+    padding: .5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#logoImage1 {
+    position: absolute;
+    left: 0;
+    top: 7%;
+}
+
+#logoImage2 {
+    right: 0;
+    top: 7%;
+    position: absolute;
+}
+
+
+#start-game {
+    justify-content: center;
+}
+
+#hint-game {
+    margin: 10px;
+}
+
+#solve-game {
+    margin: 10px;
+}
 
 .hide {
     display: none;
 }
 
-h1 {
-    font-size: 50px;
-}
 
 footer {
     display: flex;
