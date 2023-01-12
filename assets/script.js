@@ -2,14 +2,13 @@ const startGameButton = document.getElementById("start-game");
 const hintGameButton = document.getElementById("hint-game");
 const solveGameButton = document.getElementById("solve-game");
 const gameTracker = document.getElementById("#games")
-let puzzle = "";
-let key = "";
 
 //? board array, will fill as it gets the set numbers from our generateBoard
 const board = Array(9).fill(null).map(() => Array(9).fill(null));
 
 
 function generateBoard16() {
+    console.log("this is the 16x16 game")
     //! Api for 16x16 + its key
     const options = {
         method: 'GET',
@@ -24,6 +23,7 @@ function generateBoard16() {
         .then(response => console.log(response))
         .catch(err => console.error(err));
 
+
     for (let r = 0; r < 16; r++) {
         for (let c = 0; c < 16; c++) {
             let tile = document.createElement("div");
@@ -35,6 +35,7 @@ function generateBoard16() {
 }
 //? creates board based on user selected input of difficulty
 function startGame() {
+    console.log("this is the 9x9 game")
     //! This is our API for generating the sudoku 9x9 + its key
     const creator = {
         method: 'GET',
@@ -43,18 +44,22 @@ function startGame() {
             'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
         }
     };
-    console.log("Game started!");
+
     fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku?withSolution=true', creator)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => makeBoard(response))
+        //* json.data.puzzle
+        //*json.data.solution
         .catch(err => console.error(err));
-        
+
     //? increases the tracker for number of games played by the user
     function gameCount() {
         gameTracker.textContent++;
     }
     //? when the start game button is pressed it should generate a new board
-
+function makeBoard(response){
+    let puzzle = response.puzzle;
+    console.log(puzzle)
     for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
             let tile = document.createElement("div");
@@ -63,6 +68,7 @@ function startGame() {
             document.getElementById("board").append(tile);
         }
     }
+}
 }
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
@@ -96,4 +102,4 @@ startGameButton.addEventListener("click", startGame);// Main JS script
 startGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
-startGameButton.addEventListener("click", solveGame);
+//startGameButton.addEventListener("click", solveGame);
