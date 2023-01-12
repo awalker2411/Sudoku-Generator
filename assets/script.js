@@ -11,12 +11,6 @@ localStorage.getItem('puzzleArray', puzzle9);
 localStorage.getItem('solution', solution9);
 console.log("outisde function", solution9, puzzle9)
 
-
-
-//? board array, will fill as it gets the set numbers from our generateBoard
-const board = Array(9).fill(null).map(() => Array(9).fill(null));
-
-
 function generateBoard16() {
     console.log("this is the 16x16 game")
     //! Api for 16x16 + its key
@@ -34,8 +28,6 @@ function generateBoard16() {
         .catch(err => console.error(err));
 
     function makeBoard(response) {
-        let puzzle16 = response.puzzle;
-        console.log(puzzle16)
         let puzzleArray16 = Array.from(response.puzzle);
         let solution16 = response.solution;
         localStorage.setItem('puzzleArray16', puzzleArray16);
@@ -113,8 +105,7 @@ function startGame() {
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
 
-
-
+}
     // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
     // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
     function solveGame() {
