@@ -5,11 +5,13 @@ const gameTracker = document.getElementById("#games")
 
 let puzzle9 = "";
 let solution9 = "";
-const puzzleArray = [];
-const keyArray = [];
-localStorage.getItem('puzzleArray', puzzle9);
-localStorage.getItem('solution', solution9);
-console.log("outisde function", solution9, puzzle9)
+const puzzle9Array = [];
+const solution9Array = [];
+const userPuzzle9Array = [];
+
+//localStorage.getItem('puzzleArray', puzzle9);
+//localStorage.getItem('solution', solution9);
+//console.log("outisde function", solution9, puzzle9)
 
 function generateBoard16() {
     console.log("this is the 16x16 game")
@@ -99,18 +101,54 @@ function startGame() {
     }
     //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
-        let puzzleArray = (response.puzzle);
-        let solutionArray = Array.from(response.solution);
-        localStorage.setItem('puzzleArray', puzzleArray);
-        localStorage.setItem('solution', solutionArray);
-        
-        //!this should split the string into a 9x9 array to be read by the board
-        var mainArray = [];
 
+        let puzzle9 = response.puzzle;
+        puzzle9Array = Array.from(response.puzzle);
+        let solution9 = response.solution;
+        solution9Array = Array.from(response.solution9);
+        localStorage.setItem('puzzleArray', puzzleArray);
+        localStorage.setItem('solution', solution9);
+        console.log("inside function", solution9, puzzle9)
+
+ //!this should split the string into a 9x9 array to be read by the board
+        var mainArray = [];
         for (var i = 0; i < puzzleArray.length; i += 9) {
             var subString = puzzleArray.slice(i, i + 9);
             var subArray = subString.split("").map(Number);
             mainArray.push(subArray);
+        }
+        console.log(puzzleArray)
+        console.log(mainArray)
+        //! creates the table
+        var table = document.createElement("table");
+        table.setAttribute("id", "sudoku-table");
+        //! rows and cells
+        for (var i = 0; i < 9; i++) {
+            var col = document.createElement("tr");
+            for (var j = 0; j < 9; j++) {
+                var row = document.createElement("td");
+                var value = mainArray[i][j];
+                if (value == NaN) {
+                    row.innerHTML = "";
+                    row.setAttribute("class", "empty-cell");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "number");
+                    input.setAttribute("class", "empty-cell-input");
+                    row.appendChild(input);
+                    input.addEventListener("input", function (event) {
+                        //Code to handle user input
+                    });
+                } else {
+                    row.innerHTML = value;
+                }
+                col.appendChild(row);
+            }
+            table.appendChild(col);
+        }
+        //Append table to the container
+        document.getElementById("board").appendChild(table);
+    }
+}
         }
 
         console.log(puzzleArray)
