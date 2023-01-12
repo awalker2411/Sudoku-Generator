@@ -5,13 +5,11 @@ const gameTracker = document.getElementById("#games")
 
 let puzzle9 = "";
 let solution9 = "";
-const puzzle9Array = [];
-const solution9Array = [];
-const userPuzzle9Array = [];
-
-//localStorage.getItem('puzzleArray', puzzle9);
-//localStorage.getItem('solution', solution9);
-//console.log("outisde function", solution9, puzzle9)
+const puzzleArray = [];
+const keyArray = [];
+localStorage.getItem('puzzleArray', puzzle9);
+localStorage.getItem('solution', solution9);
+console.log("outisde function", solution9, puzzle9)
 
 function generateBoard16() {
     console.log("this is the 16x16 game")
@@ -101,55 +99,19 @@ function startGame() {
     }
     //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
-
-        let puzzle9 = response.puzzle;
-        puzzle9Array = Array.from(response.puzzle);
-        let solution9 = response.solution;
-        solution9Array = Array.from(response.solution9);
+        let puzzleArray = (response.puzzle);
+        let solutionArray = Array.from(response.solution);
         localStorage.setItem('puzzleArray', puzzleArray);
-        localStorage.setItem('solution', solution9);
-        console.log("inside function", solution9, puzzle9)
+        localStorage.setItem('solution', solutionArray);
 
- //!this should split the string into a 9x9 array to be read by the board
+        //!this should split the string into a 9x9 array to be read by the board
         var mainArray = [];
+
         for (var i = 0; i < puzzleArray.length; i += 9) {
             var subString = puzzleArray.slice(i, i + 9);
             var subArray = subString.split("").map(Number);
             mainArray.push(subArray);
         }
-        console.log(puzzleArray)
-        console.log(mainArray)
-        //! creates the table
-        var table = document.createElement("table");
-        table.setAttribute("id", "sudoku-table");
-        //! rows and cells
-        for (var i = 0; i < 9; i++) {
-            var col = document.createElement("tr");
-            for (var j = 0; j < 9; j++) {
-                var row = document.createElement("td");
-                var value = mainArray[i][j];
-                if (value == NaN) {
-                    row.innerHTML = "";
-                    row.setAttribute("class", "empty-cell");
-                    var input = document.createElement("input");
-                    input.setAttribute("type", "number");
-                    input.setAttribute("class", "empty-cell-input");
-                    row.appendChild(input);
-                    input.addEventListener("input", function (event) {
-                        //Code to handle user input
-                    });
-                } else {
-                    row.innerHTML = value;
-                }
-                col.appendChild(row);
-            }
-            table.appendChild(col);
-        }
-        //Append table to the container
-        document.getElementById("board").appendChild(table);
-    }
-}
-        }
 
         console.log(puzzleArray)
         console.log(mainArray)
@@ -162,18 +124,21 @@ function startGame() {
             for (var j = 0; j < 9; j++) {
                 var row = document.createElement("td");
                 var value = mainArray[i][j];
-                if (value == 'NaN') {
+                if (value > "0" || value < "9") {
+                    row.innerHTML = value;
+                } else {
+                    row.innerHTML = value;
                     row.innerHTML = "";
                     row.setAttribute("class", "empty-cell");
                     var input = document.createElement("input");
-                    input.setAttribute("type", "text");
+                    input.setAttribute("type", "number");
+                    input.setAttribute("min", "1");
+                    input.setAttribute("max", "9");
                     input.setAttribute("class", "empty-cell-input");
                     row.appendChild(input);
                     input.addEventListener("input", function (event) {
                         //Code to handle user input
                     });
-                } else {
-                    row.innerHTML = value;
                 }
                 col.appendChild(row);
             }
@@ -187,25 +152,25 @@ function startGame() {
 function giveHint() {
 
 }
-    // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
-    // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
-    function solveGame() {
-        const options = {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
-                'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
-            },
-            //? needs to be setup to take our puzzle board  
-            body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
-        };
-        //?this will generate the solution 
-        fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
-    }
+// When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
+// Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
+function solveGame() {
+    const options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
+            'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
+        },
+        //? needs to be setup to take our puzzle board  
+        body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
+    };
+    //?this will generate the solution 
+    fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+}
 // Listener for start button being clicked
 startGameButton.addEventListener("click", startGame);// Main JS script
 
