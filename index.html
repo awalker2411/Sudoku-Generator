@@ -12,6 +12,7 @@
     <!-- Link to local custom stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
     <!-- Link to local JS script -->
+    <script defer src="./assets/Evan.js"></script>
     <script defer src="assets/Anthony.js"></script>
     <script defer src="assets/script.js"></script>
     <title>Sudoku Haven</title>
@@ -36,10 +37,10 @@
                 </div>
                 <h3>Please select a difficulty below:</h3>
                 <hr class="mb-3 border-gray-300" />
-                <div class="flex justify-between mb-5">
-                    <button id="easyBtn" type="click" class="bg-green-500 hover:bg-transparent text-white font-semibold hover:text-green-500 py-2 px-4 border border-green-500 hover:border-green-500 rounded">Easy</button>
-                    <button id="medBtn" type="click" class="bg-yellow-300 hover:bg-transparent text-white font-semibold hover:text-yellow-300 py-2 px-4 border border-yellow-300 hover:border-yellow-300 rounded">Medium</button>
-                    <button id="hardBtn" type="click" class="bg-red-500 hover:bg-transparent text-white font-semibold hover:text-red-500 py-2 px-4 border border-red-500 hover:border-red-500 rounded">Hard</button>
+                <div class="flex justify-center mb-4">
+                    <button id="easyBtn" type="click" class="difficultyBtn bg-green-500 hover:bg-transparent text-white font-semibold hover:text-green-500 py-2 px-4 border border-green-500 hover:border-green-500 rounded">Easy</button>
+                    <button id="medBtn" type="click" class="difficultyBtn bg-yellow-300 hover:bg-transparent text-white font-semibold hover:text-yellow-300 py-2 px-4 border border-yellow-300 hover:border-yellow-300 rounded">Medium</button>
+                    <button id="hardBtn" type="click" class="difficutyBtn bg-red-500 hover:bg-transparent text-white font-semibold hover:text-red-500 py-2 px-4 border border-red-500 hover:border-red-500 rounded">Hard</button>
                 </div>
                 <!-- Start Game button -->
                 <div class="flex justify-center">
@@ -61,22 +62,23 @@
                 </div>
                 <hr class="mb-3 border-gray-300" />
                 <!-- Hint Game button -->
-                <div>
-                    <button id="hint-game" class="bg-transparent hover:bg-purple-500 text-purple-500 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded" type="button">Show Hint</button>
+                <div class="flex justify-center">
+                    <button id="hint-game" class="bg-purple-500 hover:bg-transparent text-white font-semibold hover:text-purple-500 py-2 px-4 border border-purple-500 hover:border-purple-500 rounded" type="button">Show Hint</button>
                     <!-- Solve Game button-->
-                    <button id="solve-game" class="mt-3 bg-transparent hover:bg-purple-500 text-purple-500 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent rounded" type="button">Solve Puzzle</button>
+                    <button id="solve-game" class="bg-purple-500 hover:bg-transparent text-white font-semibold hover:text-purple-500 py-2 px-4 border border-purple-500 hover:border-purple-500 rounded" type="button">Solve Puzzle</button>
                 </div>
             </div>
             <div class="p-6 shadow-lg bg-gray-100 text-gray-700 border border-solid border-gray-300">
                 <h2 class="font-semibold text-2xl mb-3">User Stats</h2>
-                <hr class="mb-3 border-gray-300" />
-                <label for="username-input" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                <input type="text" id="username-input" class="block w-full p-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <button id="saveUsername" class="mt-3 bg-blue-500 hover:bg-transparent text-white font-semibold hover:text-blue-700 py-2 px-4 border border-blue-500 hover:border-blue-500 rounded" type="button">Save Username</button>
-                <!-- Form is hidden until user inputs their initials which is then save to local storage -->
-                <div class="hide">
-                    <h2>User Total Attempts: <span id="userAttempts"></span></h2>
-                    <h2>User Completions: <span id="userCompletions"></span></h2>
+                <div id="initialShownStats">
+                    <p>Please enter a username to be able to track your progress:</p>
+                    <hr class="mb-3 border-gray-300" />
+                    <label for="username-input" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                    <input type="text" id="username-input" class="block w-full p-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <button id="saveUsername" type="click" class="mt-3 bg-blue-500 hover:bg-transparent text-white font-semibold hover:text-blue-700 py-2 px-4 border border-blue-500 hover:border-blue-500 rounded" type="button">Save Username</button>
+                </div>
+                <div id="existingShownStats" class="">
+                    <!-- Form is hidden until user inputs their initials which is then save to local storage -->
                 </div>
             </div>
         </div>

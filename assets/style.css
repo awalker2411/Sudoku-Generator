@@ -34,6 +34,17 @@ header {
     position: absolute;
 }
 
+#easyBtn {
+    margin: 2%;
+}
+
+#medBtn {
+    margin: 2%;
+}
+
+#hardBtn {
+    margin: 2%;
+}
 
 #start-game {
     justify-content: center;
@@ -46,22 +57,16 @@ header {
 #solve-game {
     margin: 10px;
 }
+/* Custom Classes Styling */
+
+
+
 
 .hide {
     display: none;
 }
 
 
-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
-    background-color: #224870;
-    color: #E1F2FE;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 
 /* Controls NumberPad Stylings */
 .numberPadContainer {
@@ -80,7 +85,7 @@ footer {
     margin-right: 0;
     padding-right: 0;
     margin-left: 10%;
-
+    
 }
 
 
@@ -118,3 +123,19 @@ tr:nth-child(7) {
     font-size: 20px;
     border: none;
 }
+
+/* Footer Stylings */
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    background-color: #224870;
+    color: #E1F2FE;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
