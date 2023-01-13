@@ -9,6 +9,8 @@ let solution9 = "";
 const puzzleArray = [];
 const userPuzzleArray = [];
 const keyArray = [];
+let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
+let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
 let incorrectEntries;
 localStorage.getItem('puzzleArray', puzzle9);
 localStorage.getItem('solution', solution9);
@@ -81,6 +83,7 @@ function generateBoard16() {
 //? creates board based on user selected input of difficulty
 function startGame() {
     console.log("this is the 9x9 game")
+    attemptedPuzzles++;
 
     //! This is our API for generating the sudoku 9x9 + its key
     //! This is our API for generating the sudoku 9x9 + its key
@@ -169,31 +172,28 @@ function startGame() {
     }
 }
 
-
-
-// When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
-function giveHint() {
-
-}
 // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
 // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
-function solveGame() {
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
-            'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
-        },
-        //? needs to be setup to take our puzzle board  
-        body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
-    };
-    //?this will generate the solution 
-    fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-}
+// function solveGame() {
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'content-type': 'application/json',
+//             'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
+//             'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
+//         },
+//         //? needs to be setup to take our puzzle board  
+//         body: '{"board":[[5,0,0,0,9,0,0,0,0],[7,9,0,0,0,0,0,0,8],[0,6,0,8,0,0,0,2,5],[9,0,6,0,0,5,0,0,0],[0,0,0,0,0,0,0,4,0],[0,0,0,0,7,1,0,0,0],[0,7,3,0,0,0,4,5,0],[0,0,4,0,6,0,2,0,0],[0,0,0,2,0,0,8,0,0]]}'
+//     };
+//     //?this will generate the solution 
+//     fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/solve?count=2', options)
+//         .then(response => response.json())
+//         .then(response => console.log(response))
+//         .catch(err => console.error(err));
+// }
+
+
+
 // Listener for start button being clicked
 startGameButton.addEventListener("click", startGame);// Main JS script
 
