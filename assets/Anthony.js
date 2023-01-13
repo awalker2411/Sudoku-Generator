@@ -26,7 +26,7 @@ function giveHint() {
 
 }
 
-// When the solve button is pressed, should ge
+// When the solve button is pressed, should compare user input to key, overwrite incorrect user entires on the table, display the number of incorrect entires, and then update the completed puzzles number
 function solveGame() {
     getUserInputs();
 
@@ -43,6 +43,8 @@ function solveGame() {
     let incorrectEntriesMessage = document.createElement('div').textContent(incorrectEntries);
     table.append(incorrectEntriesMessage);
 
-    localStorage.setItem(completedPuzzles++);
+    if (incorrectEntries === 0) {
+        localStorage.setItem('completedPuzzles', completedPuzzles++);
+    }
 
 }
