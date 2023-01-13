@@ -6,7 +6,9 @@ const gameTracker = document.getElementById("#games")
 let puzzle9 = "";
 let solution9 = "";
 const puzzleArray = [];
+const userPuzzleArray = [];
 const keyArray = [];
+let incorrectEntries;
 localStorage.getItem('puzzleArray', puzzle9);
 localStorage.getItem('solution', solution9);
 console.log("outisde function", solution9, puzzle9)
