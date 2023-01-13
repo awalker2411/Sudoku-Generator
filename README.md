@@ -20,6 +20,10 @@ This project aims to develop a website that generates and allows the solving of 
 
 The website will be developed using modern web development technologies such as HTML, CSS, and JavaScript for the front-end and Python/Django for the back-end. The website will be tested for functionality and performance before it is deployed for public use.
 
+API's:
+9x9 generator & solution/hints: https://rapidapi.com/nicknlsn/api/sudoku-service
+16x16 generator & easy/medium/hard generator: https://rapidapi.com/bogdanmuroianu/api/mega-sudoku-generator/
+
 ## Credits
 [John Hoy](https://github.com/John-Hoy)
 [Evan Towlerton](https://github.com/Etowww)

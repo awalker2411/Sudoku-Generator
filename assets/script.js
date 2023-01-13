@@ -2,7 +2,8 @@ const startGameButton = document.getElementById("start-game");
 const hintGameButton = document.getElementById("hint-game");
 const solveGameButton = document.getElementById("solve-game");
 const gameTracker = document.getElementById("#games")
-
+let difficulty = "easy"
+let boardSize = "9"
 let puzzle9 = "";
 let solution9 = "";
 const puzzleArray = [];
@@ -80,6 +81,7 @@ function startGame() {
     console.log("this is the 9x9 game")
 
     //! This is our API for generating the sudoku 9x9 + its key
+    //! This is our API for generating the sudoku 9x9 + its key
     const creator = {
         method: 'GET',
         headers: {
@@ -93,14 +95,11 @@ function startGame() {
         .then(response => makeBoard(response))
         .catch(err => console.error(err));
 
-    //? increases the tracker for number of games played by the user
-    function gameCount() {
-        gameTracker.textContent++;
-    }
-    //? when the start game button is pressed it should generate a new board
     function makeBoard(response) {
         let puzzleArray = (response.puzzle);
+        console.log(puzzleArray)
         let solutionArray = Array.from(response.solution);
+        console.log()
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
 
@@ -112,9 +111,6 @@ function startGame() {
             var subArray = subString.split("").map(Number);
             mainArray.push(subArray);
         }
-
-        console.log(puzzleArray)
-        console.log(mainArray)
         //! creates the table
         var table = document.createElement("table");
         table.setAttribute("id", "sudoku-table");
@@ -130,11 +126,11 @@ function startGame() {
                     row.innerHTML = value;
                     row.innerHTML = "";
                     row.setAttribute("class", "empty-cell");
-                    var input = document.createElement("input");
+                    var input = document.createElement("span");
                     input.setAttribute("type", "number");
+                    input.setAttribute("contenteditable", "true");
                     input.setAttribute("min", "1");
                     input.setAttribute("max", "9");
-                    input.setAttribute("class", "empty-cell-input");
                     row.appendChild(input);
                     input.addEventListener("input", function (event) {
                         //Code to handle user input
@@ -146,8 +142,30 @@ function startGame() {
         }
         //Append table to the container
         document.getElementById("board").appendChild(table);
+        var empty_cells = 0;
+        for (var i = 0; i < puzzleArray.length; i++) {
+            if (puzzleArray[i] === ".") {
+                empty_cells++;
+            }
+        }
+        if (empty_cells <= 30) {
+            difficulty = "easy"
+            console.log(empty_cells)
+            console.log(difficulty)
+        } else if (empty_cells <= 60) {
+            difficulty = "medium"
+            console.log(empty_cells)
+            console.log(difficulty)
+        } else {
+            difficulty = "hard"
+            console.log(empty_cells)
+            console.log(difficulty)
+        }
     }
 }
+
+
+
 // When the hint button is pressed, should color code user inputs with green if correct and red if incorrect
 function giveHint() {
 
@@ -179,3 +197,23 @@ startGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
 //startGameButton.addEventListener("click", solveGame);
+
+//document.getElementById("easyBtn").addEventListener("click", function () {
+//    difficulty = "easy";
+//});
+//
+//document.getElementById("medBtn").addEventListener("click", function () {
+//    difficulty = "medium";
+//});
+//
+//document.getElementById("hardBtn").addEventListener("click", function () {
+//    difficulty = "hard";
+//});
+//
+//document.getElementById("size9Btn").addEventListener("click", function () {
+//    boardSize = 9;
+//});
+//
+//document.getElementById("size16Btn").addEventListener("click", function () {
+//    boardSize = 16;
+//});

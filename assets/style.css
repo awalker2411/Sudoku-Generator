@@ -11,6 +11,7 @@ header {
     padding: 15px 0px 15px 0px;
     font-size: 50px;
     position: relative;
+    max-width: 100%;
 }
 
 #titleContainer {
@@ -57,25 +58,39 @@ footer {
     margin-top: auto;
     background-color: #224870;
     color: #E1F2FE;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-#board {
-    margin-top: 20%;
+/* Controls NumberPad Stylings */
+.numberPadContainer {
+    margin-top: 40%;
+    margin-left: 10%;
+    margin-right: 25%;
 }
 
+.numberPadBtn {
+    margin: 1%
+}
+
+/* Sudoku Board Stylings */
+#board {
+    margin-top: 35%;
+    margin-right: 0;
+    padding-right: 0;
+    margin-left: 10%;
+
+}
 
 
 td {
     width: 50px;
     height: 50px;
-    text-align: center;
     border: 1px solid black;
+    text-align: center;
 }
 
-/* Add thicker border for the 3x3 sub-grids */
 td:nth-child(3n) {
     border-right-width: 5px;
 }
