@@ -97,9 +97,7 @@ function startGame() {
 
     function makeBoard(response) {
         let puzzleArray = (response.puzzle);
-        console.log(puzzleArray)
         let solutionArray = Array.from(response.solution);
-        console.log()
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
 
@@ -111,6 +109,10 @@ function startGame() {
             var subArray = subString.split("").map(Number);
             mainArray.push(subArray);
         }
+
+        console.log(puzzleArray)
+        console.log(mainArray)
+        
         //! creates the table
         var table = document.createElement("table");
         table.setAttribute("id", "sudoku-table");
@@ -146,6 +148,7 @@ function startGame() {
         for (var i = 0; i < puzzleArray.length; i++) {
             if (puzzleArray[i] === ".") {
                 empty_cells++;
+
             }
         }
         if (empty_cells <= 30) {
