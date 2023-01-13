@@ -63,8 +63,24 @@ footer {
     width: 100%;
 }
 
+/* Controls NumberPad Stylings */
+.numberPadContainer {
+    margin-top: 40%;
+    margin-left: 10%;
+    margin-right: 25%;
+}
+
+.numberPadBtn {
+    margin: 1%
+}
+
+/* Sudoku Board Stylings */
 #board {
-    margin-top: 20%;
+    margin-top: 35%;
+    margin-right: 0;
+    padding-right: 0;
+    margin-left: 10%;
+
 }
 
 
