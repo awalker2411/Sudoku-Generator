@@ -76,45 +76,15 @@ function giveHint() {
     
     fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/hint', options)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => showHintValue(response.value))
         .catch(err => console.error(err));
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // for(i = 0; i < keyArray; i++) {
-    //     if(userPuzzleArray[i] === keyArray[i]) {
-    //         document.querySelector('#sudokuBoard :nth-child(' + i + ')').classList.add(textToGreen);
-    //     } else {
-    //         document.querySelector('#sudokuBoard :nth-child(' + i + ')').classList.add(textToRed);
-    //     }
-    // }
-
+    function showHintValue(){
+        document.querySelector('#sudoku-table :nth-child(' + firstEmptyCellRow + ') :nth-child(' + firstEmptyCellColumn + ')').textContent(this);
+    }
 }
 
 // When the solve button is pressed, should compare user input to key, overwrite incorrect user entires on the table, display the number of incorrect entires, and then update the completed puzzles number
