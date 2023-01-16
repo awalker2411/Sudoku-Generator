@@ -8,6 +8,7 @@ let puzzle9 = "";
 let solution9 = "";
 const puzzleArray = [];
 const userPuzzleArray = [];
+let userPuzzleString;
 const keyArray = [];
 let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
 let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
