@@ -58,17 +58,12 @@ header {
     margin: 10px;
 }
 /* Custom Classes Styling */
-
-
-
-
 .hide {
     display: none;
 }
 
 
-
-/* Controls NumberPad Stylings */
+/* Controls / NumberPad Stylings */
 .numberPadContainer {
     margin-top: 40%;
     margin-left: 10%;
@@ -142,3 +137,6 @@ footer {
 
 
 
+.textToRed {
+    color: red;
+}
