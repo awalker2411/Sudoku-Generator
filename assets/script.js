@@ -7,9 +7,10 @@ const hard = document.getElementById("#hardBtn")
 let difficulty = "easy"
 let puzzle = "";
 let solution = "";
-const puzzleArray = [];
+let puzzleArray = [];
 let userPuzzleArray = [];
 let tempPuzzArray = [];
+let firstEmptyCell;
 let firstEmptyCellRow;
 let firstEmptyCellColumn;
 let userPuzzleString;
@@ -178,4 +179,4 @@ startGameButton.addEventListener("click", startGame);// Main JS script
 hintGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
-//solveGameButton.addEventListener("click", solveGame);
+solveGameButton.addEventListener("click", solveGame);
