@@ -7,9 +7,12 @@ let boardSize = "9"
 let puzzle9 = "";
 let solution9 = "";
 const puzzleArray = [];
-const userPuzzleArray = [];
+let userPuzzleArray = [];
+let tempPuzzArray = [];
+let firstEmptyCellRow;
+let firstEmptyCellColumn;
 let userPuzzleString;
-const keyArray = [];
+let keyArray = [];
 let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
 let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
 let incorrectEntries;
@@ -104,6 +107,7 @@ function startGame() {
     function makeBoard(response) {
         let puzzleArray = (response.puzzle);
         let solutionArray = Array.from(response.solution);
+        keyArray = keyArray.concat(solutionArray);
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
 
@@ -199,7 +203,7 @@ function startGame() {
 startGameButton.addEventListener("click", startGame);// Main JS script
 
 // Listener for hint button being clicked
-startGameButton.addEventListener("click", giveHint);
+hintGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
 //startGameButton.addEventListener("click", solveGame);

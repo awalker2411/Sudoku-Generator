@@ -1,16 +1,22 @@
 //Should grab all changes made to original Sudoku board and turn them into a new array for purposes of hints and solving
 function getUserInputs() {
-    for(j = 0; j < 9; j++){
-        for(i = 0; i < puzzleArray; i++) {
-            userPuzzleArray[i] = document.querySelector('#sudoku-table :nth-child(' + j + ') :nth-child(' + i + ')');
-            if(userPuzzleArray[i] === " ") {
-                userPuzzleArray[i] = ".";
 
+    userPuzzleArray = [];
+
+
+
+    for(let j = 0; j < 9; j++){
+        for(let i = 0; i < 9; i++) {
+            tempPuzzArray[i] = document.getElementById('sudoku-table').children[j].children[i].textContent;
+            if(tempPuzzArray[i] == "") {
+                tempPuzzArray[i] = ".";
             }
         }
+        userPuzzleArray = userPuzzleArray.concat(tempPuzzArray);
     }
     userPuzzleString = userPuzzleArray.join("");
     console.log(userPuzzleArray);
+    console.log(userPuzzleString);
 }
 
 
@@ -19,8 +25,6 @@ function giveHint() {
     getUserInputs();
 
     let firstEmptyCell = userPuzzleArray.indexOf(".");
-    let firstEmptyCellRow;
-    let firstEmptyCellColumn;
     
     if(firstEmptyCell < 10) {
         firstEmptyCellRow = 0;
@@ -82,8 +86,8 @@ function giveHint() {
 
 
 
-    function showHintValue(){
-        document.querySelector('#sudoku-table :nth-child(' + firstEmptyCellRow + ') :nth-child(' + firstEmptyCellColumn + ')').textContent(this);
+    function showHintValue(element){
+        element = document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent;
     }
 }
 
@@ -91,7 +95,7 @@ function giveHint() {
 function solveGame() {
     getUserInputs();
 
-    for (i = 0; i < keyArray; i++) {
+    for (let i = 0; i < keyArray; i++) {
         if(userPuzzleArray[i] === keyArray[i]) {
             return;
         } else {
