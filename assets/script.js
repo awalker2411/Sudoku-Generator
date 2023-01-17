@@ -17,7 +17,7 @@ let userPuzzleString;
 let keyArray = [];
 let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
 let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
-let incorrectEntries = localStorage.getItem('incorrectEntries')||0;
+let incorrectEntries;
 localStorage.getItem('puzzleArray', puzzle);
 localStorage.getItem('solution', solution);
 
@@ -51,6 +51,7 @@ function startGame() {
     function makeBoard(response) {
         let puzzleArray = response.puzzle
         let solutionArray = Array.from(response.solution);
+        keyArray = [];
         keyArray = keyArray.concat(solutionArray);
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
