@@ -78,6 +78,9 @@ header {
 .numberPadBtn {
     margin: 1%
 }
+/* Random Quote Stylings */
+
+
 
 /* Sudoku Board Stylings */
 #board {
@@ -87,7 +90,6 @@ header {
     margin-left: 10%;
     
 }
-
 
 td {
     width: 50px;
@@ -123,6 +125,7 @@ tr:nth-child(7) {
     font-size: 20px;
     border: none;
 }
+
 
 /* Footer Stylings */
 footer {

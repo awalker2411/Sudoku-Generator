@@ -14,7 +14,7 @@ let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
 let incorrectEntries;
 localStorage.getItem('puzzleArray', puzzle9);
 localStorage.getItem('solution', solution9);
-console.log("outisde function", solution9, puzzle9)
+//console.log("outisde function", solution9, puzzle9)
 
 function generateBoard16() {
     console.log("this is the 16x16 game")
@@ -82,7 +82,7 @@ function generateBoard16() {
 
 //? creates board based on user selected input of difficulty
 function startGame() {
-    console.log("this is the 9x9 game")
+    //console.log("this is the 9x9 game")
     attemptedPuzzles++;
 
     //! This is our API for generating the sudoku 9x9 + its key
@@ -115,8 +115,8 @@ function startGame() {
             mainArray.push(subArray);
         }
 
-        console.log(puzzleArray)
-        console.log(mainArray)
+        //console.log(puzzleArray)
+        //console.log(mainArray)
         
         //! creates the table
         var table = document.createElement("table");
