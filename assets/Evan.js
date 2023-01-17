@@ -48,7 +48,7 @@ function renderStats() {
 }
 
 
-saveUserNameBtnEl.addEventListener("submit", saveUserStats);
+saveUserNameBtnEl.addEventListener("click", saveUserStats);
 
 
 

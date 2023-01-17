@@ -122,37 +122,6 @@ function startGame() {
     }
 }
 
-//? motivational quote
-function getQuote() {
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
-            'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com'
-        }
-    };
-
-    fetch('https://famous-quotes4.p.rapidapi.com/random?category=all&count=2', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-    function makeQuote(response) {
-        let quoteAuthor = "yooooo"
-        let quoteText = "fgdsgaggggggggggggg"
-        console.log(quoteAuthor, quoteText)
-
-        // Get the elements by their ID
-        var quoteElement = document.getElementById("quote");
-        var authorElement = document.getElementById("author");
-
-        // Insert the quote and author into the elements
-        quoteElement.innerHTML = quoteText;
-        authorElement.innerHTML = quoteAuthor;
-
-    }
-    makeQuote()
-}
-window.onload = getQuote();
 // When the solve button is pressed, wipe user inputs and generate correct numbers for the sudoku board and tell the user how many incorrect entries that they had
 // Should also update the 'Completed Puzzles' number and 'Attempted Puzzles' number
 // function solveGame() {
