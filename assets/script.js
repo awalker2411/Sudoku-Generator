@@ -17,7 +17,7 @@ let userPuzzleString;
 let keyArray = [];
 let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
 let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
-let incorrectEntries;
+let incorrectEntries = localStorage.getItem('incorrectEntries')||0;
 localStorage.getItem('puzzleArray', puzzle);
 localStorage.getItem('solution', solution);
 
