@@ -49,7 +49,7 @@ function startGame() {
         .catch(err => console.error(err));
 
     function makeBoard(response) {
-        let puzzleArray = ".517...899...4....73..95..4....1.....4.63..91....5.6.2.7..869236.2..481.38..214.6 "
+        let puzzleArray = response.puzzle
         let solutionArray = Array.from(response.solution);
         keyArray = keyArray.concat(solutionArray);
         localStorage.setItem('puzzleArray', puzzleArray);
