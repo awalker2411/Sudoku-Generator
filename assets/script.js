@@ -35,7 +35,6 @@ function startGame() {
     attemptedPuzzles++;
 
     //! This is our API for generating the sudoku 9x9 + its key
-    //! This is our API for generating the sudoku 9x9 + its key
     const creator = {
         method: 'GET',
         headers: {
@@ -179,4 +178,6 @@ startGameButton.addEventListener("click", startGame);// Main JS script
 hintGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
+
 solveGameButton.addEventListener("click", solveGame);
+
