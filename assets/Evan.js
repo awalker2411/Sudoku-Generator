@@ -19,6 +19,7 @@ function saveUserStats(event) {
     renderStats();
 }
 function init() {
+    generateQuote();
     const username= localStorage.getItem('username')
     if (username){
         renderStats()
@@ -47,8 +48,11 @@ function renderStats() {
 
 }
 
+const userNameFormEl = document.getElementById('usernameForm');
+userNameFormEl.addEventListener("submit", saveUserStats);
 
-saveUserNameBtnEl.addEventListener("click", saveUserStats);
+
+//saveUserNameBtnEl.addEventListener("click", saveUserStats);
 
 
 
@@ -60,7 +64,10 @@ function hideIntro() {
     difficultyContainerEl.classList.add("hide");
     globalCount++;
     localStorage.setItem('attempt', globalCount)
-    renderStats()
+    const username = localStorage.getItem('username')
+    if (username) {
+        renderStats()
+    }
    
 }
 
@@ -105,5 +112,3 @@ function generateQuote() {
 
     }
 };
-
-generateQuote();

@@ -81,16 +81,16 @@
                 </div>
             </div>
             <div class="p-6 shadow-lg bg-gray-100 text-gray-700 border border-solid border-gray-300">
-                <h2 class="font-semibold text-2xl mb-3">User Stats</h2>
+                <h2 class="font-semibold text-2xl mb-1">User Stats</h2>
                 <hr class="mb-3 border-gray-300" />
                 <div id="initialShownStats">
-                    <form>
+                    <form id="usernameForm">
                         <label for="username-input" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                         <input type="text" id="username-input" required
                             class="block w-full p-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 dark:bg-gray-700dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <button id="saveUsername"
                             class="mt-3 bg-blue-500 hover:bg-transparent text-white font-semibold hover:text-blue-700 py-2 px-4 border border-blue-500 hover:border-blue-500 rounded"
-                            type="click">Save Username</button>
+                            type="submit">Save Username</button>
                     </form>
                 </div>
                 <!-- Form is hidden until user inputs a Username which is then saved to local storage -->
