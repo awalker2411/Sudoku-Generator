@@ -7,9 +7,10 @@ const hard = document.getElementById("#hardBtn")
 let difficulty = "easy"
 let puzzle = "";
 let solution = "";
-const puzzleArray = [];
+let puzzleArray = [];
 let userPuzzleArray = [];
 let tempPuzzArray = [];
+let firstEmptyCell;
 let firstEmptyCellRow;
 let firstEmptyCellColumn;
 let userPuzzleString;
@@ -177,26 +178,6 @@ startGameButton.addEventListener("click", startGame);// Main JS script
 hintGameButton.addEventListener("click", giveHint);
 
 //Listener for solve button being clicked
-//solveGameButton.addEventListener("click", solveGame);
-//?numberpad functionality
-let selectedSpan = null;
 
-document.addEventListener("click", function (event) {
-    //checks to see if you selected a td or a span
-    if (event.target.matches("td") || event.target.matches("span")) {
-        if (selectedSpan) {
-            selectedSpan.classList.remove('selected');
-        }
-        if (event.target.matches("td")) {
-            selectedSpan = event.target.querySelector("span");
-        } else {
-            selectedSpan = event.target;
-        }
-        selectedSpan.classList.add('selected');
-    }
-    if(event.target.matches("button")){
-        if(selectedSpan !== null){
-            selectedSpan.innerHTML = event.target.dataset.value;
-        }
-    }
-});
+solveGameButton.addEventListener("click", solveGame);
+

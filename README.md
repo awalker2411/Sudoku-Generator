@@ -18,11 +18,13 @@ This project aims to develop a website that generates and allows the solving of 
 
 *Hints/solution: If a user gets stuck on a puzzle, they will be able to request a hint that will give the next number to be placed or the complete solution if they can't continue.
 
+*Quote of the Day: When a user loads up our website they will be greeted with a ranomdly generated quote to help motive them for their day.
+
 The website will be developed using modern web development technologies such as HTML, CSS, and JavaScript for the front-end. The website will be tested for functionality and performance before it is deployed for public use.
 
 API's:
 9x9 generator & solution/hints: https://rapidapi.com/nicknlsn/api/sudoku-service
-16x16 generator & easy/medium/hard generator: https://rapidapi.com/bogdanmuroianu/api/mega-sudoku-generator/
+random Quote generator: https://rapidapi.com/saicoder/api/famous-quotes4
 
 ## Credits
 [John Hoy](https://github.com/John-Hoy)

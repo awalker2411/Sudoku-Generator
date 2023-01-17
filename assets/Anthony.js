@@ -2,6 +2,7 @@
 function getUserInputs() {
 
     userPuzzleArray = [];
+    userPuzzleString = "";
 
 
 
@@ -15,8 +16,6 @@ function getUserInputs() {
         userPuzzleArray = userPuzzleArray.concat(tempPuzzArray);
     }
     userPuzzleString = userPuzzleArray.join("");
-    console.log(userPuzzleArray);
-    console.log(userPuzzleString);
 }
 
 
@@ -24,7 +23,8 @@ function getUserInputs() {
 function giveHint() {
     getUserInputs();
 
-    let firstEmptyCell = userPuzzleArray.indexOf(".");
+    firstEmptyCell = userPuzzleArray.indexOf(".");
+    console.log(firstEmptyCell);
     
     if(firstEmptyCell < 10) {
         firstEmptyCellRow = 0;
@@ -46,25 +46,29 @@ function giveHint() {
         firstEmptyCellRow = 8;
     }
 
-    if(firstEmptyCell = 0,9,18,27,36,45,54,63,72) {
+    if(firstEmptyCell == 0||firstEmptyCell == 9||firstEmptyCell == 18||firstEmptyCell == 27||firstEmptyCell == 36||firstEmptyCell == 45||firstEmptyCell == 54||firstEmptyCell == 63||firstEmptyCell == 72) {
         firstEmptyCellColumn = 0;
-    } else if(firstEmptyCell = 1,10,19,28,37,46,55,64,73){
+    } else if(firstEmptyCell == 1||firstEmptyCell == 10||firstEmptyCell == 19||firstEmptyCell == 28||firstEmptyCell == 37||firstEmptyCell == 46||firstEmptyCell == 55||firstEmptyCell == 64||firstEmptyCell == 73){
         firstEmptyCellColumn = 1;
-    } else if(firstEmptyCell = 2,11,20,29,38,47,56,65,74){
+    } else if(firstEmptyCell == 2||firstEmptyCell == 11||firstEmptyCell == 20||firstEmptyCell == 29||firstEmptyCell == 38||firstEmptyCell == 47||firstEmptyCell == 56||firstEmptyCell == 65||firstEmptyCell == 74){
         firstEmptyCellColumn = 2;
-    } else if(firstEmptyCell = 3,12,21,30,39,48,57,66,75){
+    } else if(firstEmptyCell == 3||firstEmptyCell == 12||firstEmptyCell == 21||firstEmptyCell == 30||firstEmptyCell == 39||firstEmptyCell == 48||firstEmptyCell == 57||firstEmptyCell == 66||firstEmptyCell == 75){
         firstEmptyCellColumn = 3;
-    } else if(firstEmptyCell = 4,13,22,31,40,49,58,67,76){
+    } else if(firstEmptyCell == 4||firstEmptyCell == 13||firstEmptyCell == 22||firstEmptyCell == 31||firstEmptyCell == 40||firstEmptyCell == 49||firstEmptyCell == 58||firstEmptyCell == 67||firstEmptyCell == 76){
         firstEmptyCellColumn = 4;
-    } else if(firstEmptyCell = 5,14,23,32,41,50,59,68,77){
+    } else if(firstEmptyCell == 5||firstEmptyCell == 14||firstEmptyCell == 23||firstEmptyCell == 32||firstEmptyCell == 41||firstEmptyCell == 50||firstEmptyCell == 59||firstEmptyCell == 68||firstEmptyCell == 77){
         firstEmptyCellColumn = 5;
-    } else if(firstEmptyCell = 6,15,24,33,42,51,60,69,78){
+    } else if(firstEmptyCell == 6||firstEmptyCell == 15||firstEmptyCell == 24||firstEmptyCell == 33||firstEmptyCell == 42||firstEmptyCell == 51||firstEmptyCell == 60||firstEmptyCell == 69||firstEmptyCell == 78){
         firstEmptyCellColumn = 6;
-    } else if(firstEmptyCell = 7,16,25,34,43,52,61,70,79){
+    } else if(firstEmptyCell == 7||firstEmptyCell == 16||firstEmptyCell == 25||firstEmptyCell == 34||firstEmptyCell == 43||firstEmptyCell == 52||firstEmptyCell == 61||firstEmptyCell == 70||firstEmptyCell == 79){
         firstEmptyCellColumn = 7;
-    } else if(firstEmptyCell = 8,17,26,35,44,53,62,71,80){
-        firstEmptyCellColumn = 8;
+    } else if(firstEmptyCell == 8||firstEmptyCell == 17||firstEmptyCell == 26||firstEmptyCell == 35||firstEmptyCell == 44||firstEmptyCell == 53||firstEmptyCell == 62||firstEmptyCell == 71||firstEmptyCell == 80){
+        firstEmptyCellColumn = 8
+        ;
     }
+
+    console.log(firstEmptyCellRow);
+    console.log(firstEmptyCellColumn);
 
 
     
@@ -86,8 +90,11 @@ function giveHint() {
 
 
 
-    function showHintValue(element){
-        element = document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent;
+    function showHintValue(response){
+        document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].removeAttribute('class');
+        document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent = response;
+        console.log(document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn]);
+        console.log(document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent);
     }
 }
 
@@ -95,12 +102,60 @@ function giveHint() {
 function solveGame() {
     getUserInputs();
 
-    for (let i = 0; i < keyArray; i++) {
-        if(userPuzzleArray[i] === keyArray[i]) {
+    for (let i = 0; i < 81; i++) {
+
+        firstEmptyCell = userPuzzleArray[i];
+    
+        if(firstEmptyCell < 10) {
+            firstEmptyCellRow = 0;
+        } else if(firstEmptyCell > 9 && firstEmptyCell < 19){
+            firstEmptyCellRow = 1;
+        } else if(firstEmptyCell > 18 && firstEmptyCell < 28){
+            firstEmptyCellRow = 2;
+        } else if(firstEmptyCell > 27 && firstEmptyCell < 37){
+            firstEmptyCellRow = 3;
+        } else if(firstEmptyCell > 36 && firstEmptyCell < 46){
+            firstEmptyCellRow = 4;
+        } else if(firstEmptyCell > 45 && firstEmptyCell < 55){
+            firstEmptyCellRow = 5;
+        } else if(firstEmptyCell > 54 && firstEmptyCell < 64){
+            firstEmptyCellRow = 6;
+        } else if(firstEmptyCell > 63 && firstEmptyCell < 73){
+            firstEmptyCellRow = 7;
+        } else if(firstEmptyCell > 72 && firstEmptyCell < 82){
+            firstEmptyCellRow = 8;
+        }
+    
+        if(firstEmptyCell == 0||firstEmptyCell == 9||firstEmptyCell == 18||firstEmptyCell == 27||firstEmptyCell == 36||firstEmptyCell == 45||firstEmptyCell == 54||firstEmptyCell == 63||firstEmptyCell == 72) {
+            firstEmptyCellColumn = 0;
+        } else if(firstEmptyCell == 1||firstEmptyCell == 10||firstEmptyCell == 19||firstEmptyCell == 28||firstEmptyCell == 37||firstEmptyCell == 46||firstEmptyCell == 55||firstEmptyCell == 64||firstEmptyCell == 73){
+            firstEmptyCellColumn = 1;
+        } else if(firstEmptyCell == 2||firstEmptyCell == 11||firstEmptyCell == 20||firstEmptyCell == 29||firstEmptyCell == 38||firstEmptyCell == 47||firstEmptyCell == 56||firstEmptyCell == 65||firstEmptyCell == 74){
+            firstEmptyCellColumn = 2;
+        } else if(firstEmptyCell == 3||firstEmptyCell == 12||firstEmptyCell == 21||firstEmptyCell == 30||firstEmptyCell == 39||firstEmptyCell == 48||firstEmptyCell == 57||firstEmptyCell == 66||firstEmptyCell == 75){
+            firstEmptyCellColumn = 3;
+        } else if(firstEmptyCell == 4||firstEmptyCell == 13||firstEmptyCell == 22||firstEmptyCell == 31||firstEmptyCell == 40||firstEmptyCell == 49||firstEmptyCell == 58||firstEmptyCell == 67||firstEmptyCell == 76){
+            firstEmptyCellColumn = 4;
+        } else if(firstEmptyCell == 5||firstEmptyCell == 14||firstEmptyCell == 23||firstEmptyCell == 32||firstEmptyCell == 41||firstEmptyCell == 50||firstEmptyCell == 59||firstEmptyCell == 68||firstEmptyCell == 77){
+            firstEmptyCellColumn = 5;
+        } else if(firstEmptyCell == 6||firstEmptyCell == 15||firstEmptyCell == 24||firstEmptyCell == 33||firstEmptyCell == 42||firstEmptyCell == 51||firstEmptyCell == 60||firstEmptyCell == 69||firstEmptyCell == 78){
+            firstEmptyCellColumn = 6;
+        } else if(firstEmptyCell == 7||firstEmptyCell == 16||firstEmptyCell == 25||firstEmptyCell == 34||firstEmptyCell == 43||firstEmptyCell == 52||firstEmptyCell == 61||firstEmptyCell == 70||firstEmptyCell == 79){
+            firstEmptyCellColumn = 7;
+        } else if(firstEmptyCell == 8||firstEmptyCell == 17||firstEmptyCell == 26||firstEmptyCell == 35||firstEmptyCell == 44||firstEmptyCell == 53||firstEmptyCell == 62||firstEmptyCell == 71||firstEmptyCell == 80){
+            firstEmptyCellColumn = 8
+            ;
+        }
+
+        if(userPuzzleArray[i] = ".") {
+            userPuzzleArray[i] = 0;
+        }
+
+        if(userPuzzleArray[i] == keyArray[i]) {
             return;
         } else {
-            document.querySelector('#sudokuBoard :nth-child(' + i + ')').textContent(keyArray[i]);
-            document.querySelector('#sudokuBoard :nth-child(' + i + ')').classList.add(textToRed);
+            document.getElementById('sudokuBoard').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent = keyArray[i];
+            document.getElementById('sudokuBoard').children[firstEmptyCellRow].children[firstEmptyCellColumn].classList.add('textToRed');
             incorrectEntries++;
         }
     }
