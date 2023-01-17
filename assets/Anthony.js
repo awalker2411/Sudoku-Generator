@@ -103,6 +103,8 @@ function giveHint() {
 function solveGame() {
     getUserInputs();
 
+    incorrectEntries = 0;
+
     let cellNum;
     let rowNum;
     let colNum;
@@ -165,10 +167,6 @@ function solveGame() {
             incorrectEntries++;
         }
     }
-
-    let incorrectEntriesMessage = document.createElement('div');
-    incorrectEntriesMessage.textContent = incorrectEntries;
-    document.getElementById('sudoku-table').append(incorrectEntriesMessage);
 
     if (incorrectEntries === 0) {
         localStorage.setItem('completedPuzzles', completedPuzzles++);
