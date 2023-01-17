@@ -8,10 +8,14 @@ let difficulty = "easy"
 let puzzle = "";
 let solution = "";
 const puzzleArray = [];
-const userPuzzleArray = [];
-const keyArray = [];
-let completedPuzzles = localStorage.getItem('completedPuzzles') || 0;
-let attemptedPuzzles = localStorage.getItem('attemptedPuzzles') || 0;
+let userPuzzleArray = [];
+let tempPuzzArray = [];
+let firstEmptyCellRow;
+let firstEmptyCellColumn;
+let userPuzzleString;
+let keyArray = [];
+let completedPuzzles = localStorage.getItem('completedPuzzles')||0;
+let attemptedPuzzles = localStorage.getItem('attemptedPuzzles')||0;
 let incorrectEntries;
 localStorage.getItem('puzzleArray', puzzle);
 localStorage.getItem('solution', solution);
@@ -47,6 +51,7 @@ function startGame() {
     function makeBoard(response) {
         let puzzleArray = ".517...899...4....73..95..4....1.....4.63..91....5.6.2.7..869236.2..481.38..214.6 "
         let solutionArray = Array.from(response.solution);
+        keyArray = keyArray.concat(solutionArray);
         localStorage.setItem('puzzleArray', puzzleArray);
         localStorage.setItem('solution', solutionArray);
 
@@ -171,23 +176,6 @@ startGameButton.addEventListener("click", startGame);// Main JS script
 
 // Listener for hint button being clicked
 hintGameButton.addEventListener("click", giveHint);
-function giveHint() {
-    console.log("ello")
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': '72d127291bmsh1e75b0ade2c691bp11f226jsn75f66a8bbb06',
-            'X-RapidAPI-Host': 'sudoku-service.p.rapidapi.com'
-        },
-        body: '{"cell":{"row":1,"column":1},"board":[[0,5,1,7,0,0,0,8,9],[9,0,0,0,4,0,0,0,0],[7,3,0,0,9,5,0,0,4],[0,0,0,0,1,0,0,0,0],[0,4,0,6,3,0,0,9,1],[0,0,0,0,5,0,6,0,2],[0,7,0,0,8,6,9,2,3],[6,0,2,0,0,4,8,1,0],[3,8,0,0,2,1,4,0,6]]}'
-    };
-
-    fetch('https://sudoku-service.p.rapidapi.com/v1/sudoku/hint', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-}
 
 //Listener for solve button being clicked
 //solveGameButton.addEventListener("click", solveGame);
