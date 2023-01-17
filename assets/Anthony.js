@@ -86,8 +86,10 @@ function giveHint() {
 
 
 
-    function showHintValue(element){
-        element = document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent;
+    function showHintValue(response){
+        document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].removeAttribute('class');
+        document.getElementById('sudoku-table').children[firstEmptyCellRow].children[firstEmptyCellColumn].textContent = response;
+
     }
 }
 
