@@ -24,25 +24,26 @@ function giveHint() {
     getUserInputs();
 
     firstEmptyCell = userPuzzleArray.indexOf(".");
-    console.log(firstEmptyCell);
-    
-    if(firstEmptyCell < 10) {
+    console.log('firstEmptyCell', firstEmptyCell);
+    console.log(userPuzzleArray);
+
+    if(firstEmptyCell < 9) { 
         firstEmptyCellRow = 0;
-    } else if(firstEmptyCell > 9 && firstEmptyCell < 19){
+    } else if(firstEmptyCell > 8 && firstEmptyCell < 18){ 
         firstEmptyCellRow = 1;
-    } else if(firstEmptyCell > 18 && firstEmptyCell < 28){
+    } else if(firstEmptyCell > 17 && firstEmptyCell < 27){ 
         firstEmptyCellRow = 2;
-    } else if(firstEmptyCell > 27 && firstEmptyCell < 37){
+    } else if(firstEmptyCell > 26 && firstEmptyCell < 36){
         firstEmptyCellRow = 3;
-    } else if(firstEmptyCell > 36 && firstEmptyCell < 46){
+    } else if(firstEmptyCell > 35 && firstEmptyCell < 45){
         firstEmptyCellRow = 4;
-    } else if(firstEmptyCell > 45 && firstEmptyCell < 55){
+    } else if(firstEmptyCell > 44 && firstEmptyCell < 54){
         firstEmptyCellRow = 5;
-    } else if(firstEmptyCell > 54 && firstEmptyCell < 64){
+    } else if(firstEmptyCell > 53 && firstEmptyCell < 63){
         firstEmptyCellRow = 6;
-    } else if(firstEmptyCell > 63 && firstEmptyCell < 73){
+    } else if(firstEmptyCell > 62 && firstEmptyCell < 72){
         firstEmptyCellRow = 7;
-    } else if(firstEmptyCell > 72 && firstEmptyCell < 82){
+    } else if(firstEmptyCell > 71 && firstEmptyCell < 81){
         firstEmptyCellRow = 8;
     }
 
@@ -106,23 +107,23 @@ function solveGame() {
 
         firstEmptyCell = userPuzzleArray[i];
     
-        if(firstEmptyCell < 10) {
+        if(firstEmptyCell < 9) { 
             firstEmptyCellRow = 0;
-        } else if(firstEmptyCell > 9 && firstEmptyCell < 19){
+        } else if(firstEmptyCell > 8 && firstEmptyCell < 18){ 
             firstEmptyCellRow = 1;
-        } else if(firstEmptyCell > 18 && firstEmptyCell < 28){
+        } else if(firstEmptyCell > 17 && firstEmptyCell < 27){ 
             firstEmptyCellRow = 2;
-        } else if(firstEmptyCell > 27 && firstEmptyCell < 37){
+        } else if(firstEmptyCell > 26 && firstEmptyCell < 36){
             firstEmptyCellRow = 3;
-        } else if(firstEmptyCell > 36 && firstEmptyCell < 46){
+        } else if(firstEmptyCell > 35 && firstEmptyCell < 45){
             firstEmptyCellRow = 4;
-        } else if(firstEmptyCell > 45 && firstEmptyCell < 55){
+        } else if(firstEmptyCell > 44 && firstEmptyCell < 54){
             firstEmptyCellRow = 5;
-        } else if(firstEmptyCell > 54 && firstEmptyCell < 64){
+        } else if(firstEmptyCell > 53 && firstEmptyCell < 63){
             firstEmptyCellRow = 6;
-        } else if(firstEmptyCell > 63 && firstEmptyCell < 73){
+        } else if(firstEmptyCell > 62 && firstEmptyCell < 72){
             firstEmptyCellRow = 7;
-        } else if(firstEmptyCell > 72 && firstEmptyCell < 82){
+        } else if(firstEmptyCell > 71 && firstEmptyCell < 81){
             firstEmptyCellRow = 8;
         }
     
