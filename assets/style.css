@@ -118,3 +118,7 @@ tr:nth-child(7) {
     font-size: 20px;
     border: none;
 }
+
+.textToRed {
+    color: red;
+}
