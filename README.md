@@ -26,6 +26,14 @@ API's:
 9x9 generator & solution/hints: https://rapidapi.com/nicknlsn/api/sudoku-service
 random Quote generator: https://rapidapi.com/saicoder/api/famous-quotes4
 
+![Sudoku1](https://user-images.githubusercontent.com/120272622/213245514-ce33675f-f257-42fa-8fa3-42e9eb7a05c2.PNG)
+
+![Sudoku2](https://user-images.githubusercontent.com/120272622/213245561-e99368b0-81f0-401d-9864-c6e4264333a8.PNG)
+
+![Sudoku3](https://user-images.githubusercontent.com/120272622/213245586-d8e489cd-b38d-4fe8-b6ba-ba77e856dd4b.PNG)
+
+![Sudoku4](https://user-images.githubusercontent.com/120272622/213245607-256eee23-35a0-4031-a056-d09c5aedb543.PNG)
+
 Deployed Webpage Link: https://awalker2411.github.io/Sudoku-Generator/
 
 Github Repository Link: https://github.com/awalker2411/Sudoku-Generator
