@@ -10,7 +10,9 @@ const startGameBtnEl = document.getElementById("start-game")
 
 
 
-let globalCount = localStorage.getItem('attempt') || 0
+let globalCount = localStorage.getItem('attempt') || 0;
+let globalSolved = localStorage.getItem('completedPuzzles') || 0;
+
 function saveUserStats(event) {
     event.preventDefault();
     var currentUser = userNameInputEl.value;
@@ -43,7 +45,8 @@ function renderStats() {
     existingUserStatsEl.append(userAttempts);
 
     var userCompletes = document.createElement('h2');
-    userCompletes.textContent = "Number of Sudoku Puzzles Solved: ";
+    let globalSolved = localStorage.getItem('completedPuzzles') || 0;
+    userCompletes.textContent = "Number of Sudoku Puzzles Solved: " + globalSolved;
     existingUserStatsEl.append(userCompletes);
 
 }
@@ -62,6 +65,7 @@ const difficultyContainerEl = document.getElementById('difficultyContainer')
 
 function hideIntro() {
     difficultyContainerEl.classList.add("hide");
+    hideQuote();
     globalCount++;
     localStorage.setItem('attempt', globalCount)
     const username = localStorage.getItem('username')
@@ -78,6 +82,7 @@ startGameBtnEl.addEventListener("click", hideIntro);
 ///////////////////////////////////////////
 
 const randomQuoteContainerEl = document.getElementById('randomQuoteContainer');
+const hideQuoteContainerEl = document.getElementById('hideQuoteContainer')
 
 function generateQuote() {
     const options = {
@@ -100,8 +105,8 @@ function generateQuote() {
         let generatedQuoteEl = document.createElement('p');
         let generatedAuthorEl = document.createElement('h2');
 
-        generatedQuoteEl.textContent = quoteText;
-        generatedAuthorEl.textContent = quoteAuthor;
+        generatedQuoteEl.textContent = '"' + quoteText + '"';
+        generatedAuthorEl.textContent = "-" + quoteAuthor;
 
 
         randomQuoteContainerEl.append(generatedQuoteEl);
@@ -112,3 +117,7 @@ function generateQuote() {
 
     }
 };
+
+function hideQuote() {
+    hideQuoteContainerEl.classList.add('hide');
+}

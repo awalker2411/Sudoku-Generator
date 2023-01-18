@@ -57,6 +57,7 @@ header {
 #solve-game {
     margin: 10px;
 }
+
 /* Custom Classes Styling */
 .hide {
     display: none;
@@ -65,17 +66,54 @@ header {
 
 /* Controls / NumberPad Stylings */
 .numberPadContainer {
-    margin-top: 40%;
-    margin-left: 10%;
-    margin-right: 25%;
+    margin: 40% auto 0%;
+    width: 90%;
 }
 
 .numberPadBtn {
     margin: 1%
 }
 /* Random Quote Stylings */
+#randomQuoteContainer {
+    margin: 40% 10% 0%;
+}
 
+.bx {
+    margin: 1em auto;
+    padding: 1em 2em;
+    border: solid 1px #808080;
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    max-width: 400px;
+}
+.bx h2 {
+    font-size: 1.1em;
+    margin: 0.5rem;
+    font-style: italic;
+}
 
+.bx p {
+    font-weight: 540;
+}
+
+.grayBox {
+    background: rgb(243, 244, 246);
+    border: solid 1px #848789;
+    box-shadow: inset 4px 4px 4px 0 rgba(245, 245, 245, 0.8), inset -4px -4px 4px 0 rgba(145, 145, 145, 0.3);    
+}
+
+.grayBox::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -12px; top: -12px; right: -12px; bottom: -12px; 
+    background: #b0b0b0;
+    border: solid 1px #848789;   
+    box-shadow: inset -4px -4px 4px 0 rgba(245, 245, 245, 0.3), inset 4px 4px 4px 0 rgba(145, 145, 145, 0.8); 
+    border-radius: 4px;    
+    
+}
 
 /* Sudoku Board Stylings */
 #board {
@@ -139,4 +177,16 @@ footer {
 
 .textToRed {
     color: red;
+}
+
+
+.generatedDiv {
+    display: flex;
+    justify-content: center;
+    border: solid 1px;
+    border-color: black;
+    color: rgb(55 65 81);
+    background-color: rgb(34 197 94);
+    margin: 10%;
+    padding: 1.9%;
 }
