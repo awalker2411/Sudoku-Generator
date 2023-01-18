@@ -26,7 +26,9 @@ API's:
 9x9 generator & solution/hints: https://rapidapi.com/nicknlsn/api/sudoku-service
 random Quote generator: https://rapidapi.com/saicoder/api/famous-quotes4
 
-Our Deployed Webpage Link: https://awalker2411.github.io/Sudoku-Generator/
+Deployed Webpage Link: https://awalker2411.github.io/Sudoku-Generator/
+
+Github Repository Link: https://github.com/awalker2411/Sudoku-Generator
 
 ## Credits
 [John Hoy](https://github.com/John-Hoy)
