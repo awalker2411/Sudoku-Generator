@@ -169,7 +169,21 @@ function solveGame() {
     }
 
     if (incorrectEntries === 0) {
-        localStorage.setItem('completedPuzzles', completedPuzzles++);
+        let solved = localStorage.getItem('completedPuzzles') || 0;
+        solved++;
+        localStorage.setItem('completedPuzzles', solved);
+        solveMessage();
     }
 
+}
+const mainContentEl = document.getElementById('mainContent');
+
+function solveMessage() {
+    let generatedDiv = document.createElement('div');
+    generatedDiv.classList.add('generatedDiv');
+    generatedDiv.classList.add('rounded-full')
+    let generatedMessage = document.createElement('h2');
+    generatedMessage.textContent = ("GREAT JOB! You have solved the Puzzle! Refresh the page to update your user stats.");
+    generatedDiv.append(generatedMessage);
+    mainContentEl.append(generatedDiv);
 }
